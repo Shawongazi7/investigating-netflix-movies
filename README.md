@@ -1,6 +1,6 @@
 # Investigating Netflix Movies
 
-This project explores Netflix movie data through a notebook-first exploratory data analysis workflow. The main goal is to look at how movie duration changes over time, while also surfacing genre patterns, country trends, and a few focused insights around 1990s movies.
+This project explores Netflix movie data through a notebook-first exploratory data analysis workflow. The analysis goes beyond a single visualization and looks at data completeness, title mix, release trends, runtime distributions, genre patterns, country patterns, and a focused 1990s slice.
 
 ## Main Notebook
 
@@ -8,7 +8,7 @@ This project explores Netflix movie data through a notebook-first exploratory da
 
 This notebook is the main project artifact and brings the code, findings, and visuals together in one place for GitHub review.
 
-## Highlights
+## EDA Focus
 
 - 7,787 total Netflix titles in the dataset
 - 5,377 movie entries used for the movie-focused analysis
@@ -18,8 +18,10 @@ This notebook is the main project artifact and brings the code, findings, and vi
 
 ## Questions Explored
 
+- What does the movie catalog look like before filtering?
+- How complete is the data?
 - Are Netflix movie durations getting shorter over time?
-- What does the duration-by-year pattern look like?
+- What does the duration distribution look like?
 - Which genres appear most often in the movie catalog?
 - Which countries contribute the most movie titles?
 - What stands out about movies from the 1990s?
@@ -34,16 +36,35 @@ investigating-netflix-movies/
 ├── requirements.txt
 ├── .gitignore
 └── plots/
+    ├── average_duration_by_decade.png
+    ├── content_type_split.png
+    ├── duration_distribution.png
     ├── movie_duration_by_year.png
+    ├── movies_by_release_year.png
     ├── top_countries.png
     └── top_genres.png
 ```
+
+## What The Analysis Covers
+
+- dataset overview and missing value inspection
+- movie-only filtering and summary statistics
+- movie vs TV show catalog composition
+- release trend analysis by year
+- duration distribution and decade-level comparisons
+- genre concentration and genre-based runtime differences
+- country concentration across movie titles
+- focused review of 1990s movies
 
 ## Visual Snapshot
 
 ### Movie Duration by Release Year
 
 ![Movie Duration by Release Year](plots/movie_duration_by_year.png)
+
+### Duration Distribution
+
+![Duration Distribution](plots/duration_distribution.png)
 
 ### Top Movie Genres
 
