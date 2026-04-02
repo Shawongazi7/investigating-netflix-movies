@@ -1,23 +1,54 @@
 # Investigating Netflix Movie Runtime Patterns
 
-This project is now structured as a notebook-first investigation report rather than a lightweight chart exercise. The central question is:
+This project is a notebook-first investigation of a single question:
 
-**Are Netflix movies actually getting shorter over time, or is that pattern partly explained by changes in catalog composition?**
+**Are Netflix movies really getting shorter over time, or is the trend partly explained by changes in catalog composition?**
 
-The full analysis is performed in:
+The full analysis lives in [Investigating_Netflix_Movies.ipynb](Investigating_Netflix_Movies.ipynb). It is written as a continuous investigation, not as a pile of disconnected charts.
 
-- `Investigating_Netflix_Movies.ipynb`
+## Investigation Brief
 
-## Investigation Flow
+Primary hypothesis:
 
-The notebook is organized as an evidence-building EDA:
+- newer Netflix movie releases trend shorter in runtime
 
-1. establish dataset reliability and scope
-2. isolate the movie-only population
-3. inspect catalog composition and temporal exposure
-4. analyze duration distributions and time trends
-5. test confounders such as genre mix and country concentration
-6. add a deeper inference layer for uncertainty-aware conclusions
+Alternative explanations tested in the notebook:
+
+- the observed decline is partly a genre-composition effect
+- country concentration changes create part of the movement
+- sparse early decades exaggerate apparent long-run trend strength
+
+## What The Notebook Shows
+
+The notebook moves through the problem in stages:
+
+1. check data reliability and missingness
+2. isolate movies from TV shows
+3. inspect runtime patterns across years and decades
+4. test confounders from genre and country mix
+5. add deeper statistical checks before giving a final verdict
+
+## Key Evidence
+
+- Total titles in the dataset: `7,787`
+- Movies analyzed after cleaning: `5,377`
+- Stable-year weighted runtime trend: about `-1.28` minutes per year
+- Post-2000 weighted runtime trend: about `-1.29` minutes per year
+- Spearman correlation between release year and duration: `-0.2105`
+- Mean runtime fell from `113.92` minutes in the 1990s to `96.76` in the 2010s and `89.52` in the 2020s
+
+## Final Verdict
+
+The notebook supports a more careful conclusion than a simple yes/no answer:
+
+1. Netflix movie runtimes do trend shorter in the modern catalog.
+2. The decline is moderate, noisy, and period-dependent rather than a dramatic collapse.
+3. Genre and country mix explain a meaningful share of the observed shift.
+4. Even after adjustment, a downward runtime pattern still remains.
+
+The strongest takeaway is this:
+
+**Netflix runtime evolution is best understood as a blend of time effects and catalog-composition effects, not as a single-factor story.**
 
 ## Methods Used
 
@@ -28,25 +59,6 @@ The notebook is organized as an evidence-building EDA:
 - genre-standardized decade comparison
 - country-level slope comparison
 - quantile trend tracking
-
-## Current Headline Findings
-
-- Total titles in dataset: `7,787`
-- Movies analyzed: `5,377`
-- Weighted full-sample slope: `-1.2801` minutes per year
-- Post-2000 weighted slope: `-1.2947` minutes per year
-- Spearman correlation between release year and duration: `-0.2105`
-- Modern decades are shorter on average than the 1990s and 2000s
-- Genre mix and country mix explain part of the decline, but not all of it
-
-## Main Verdict
-
-The updated notebook supports a stronger conclusion than the old version:
-
-- movie runtimes do trend shorter in the modern Netflix catalog
-- the decline is moderate rather than dramatic
-- composition effects matter, especially genre and country concentration
-- the pattern is real, but it is not well described by a simple yes/no shortcut
 
 ## Project Structure
 
@@ -72,45 +84,27 @@ investigating-netflix-movies/
     └── top_genres.png
 ```
 
-## Plot Output Guide
+## Plot Outputs
 
-Baseline EDA plots:
-
-- `content_type_split.png`
-- `movies_by_release_year.png`
-- `duration_distribution.png`
-- `movie_duration_by_year.png`
-- `average_duration_by_decade.png`
-- `top_genres.png`
-- `top_countries.png`
-
-Deep-dive outputs:
-
-- `deep_decade_bootstrap_ci.png`
-- `deep_genre_standardized_trend.png`
-- `deep_country_trend_slopes.png`
-- `deep_quantile_trends.png`
-- `deep_analysis_report.txt`
+The `plots/` folder contains the saved notebook outputs. The baseline charts cover content mix, runtime distribution, and year/decade trends. The deep-analysis charts cover bootstrap intervals, genre-standardized trends, country slope heterogeneity, and quantile movement.
 
 ## Visual Snapshot
 
-### Runtime Trend by Release Year
-
 ![Runtime Trend by Release Year](plots/movie_duration_by_year.png)
-
-### Average Duration by Decade
 
 ![Average Duration by Decade](plots/average_duration_by_decade.png)
 
-### Deep Genre-Standardized Comparison
-
 ![Genre-Standardized Trend](plots/deep_genre_standardized_trend.png)
 
-## Running the Project
+![Bootstrap Confidence Intervals By Decade](plots/deep_decade_bootstrap_ci.png)
+
+![Runtime Quantile Trends](plots/deep_quantile_trends.png)
+
+## Running The Project
 
 ```bash
 pip install -r requirements.txt
 jupyter notebook Investigating_Netflix_Movies.ipynb
 ```
 
-Run the notebook from top to bottom to reproduce the full investigation and regenerate the figures saved in `plots/`.
+Run the notebook from top to bottom to reproduce the analysis and regenerate the figures in `plots/`.
