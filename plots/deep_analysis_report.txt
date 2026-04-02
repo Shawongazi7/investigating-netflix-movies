@@ -1,0 +1,38 @@
+Deep Analysis Results
+movies_count=5377
+weighted_slope_full_minutes_per_year=-1.2801
+weighted_slope_modern_1980plus_minutes_per_year=-1.2801
+weighted_slope_post2000_minutes_per_year=-1.2947
+spearman_rho=-0.2105
+
+Decade summary (mean, median, ci_low, ci_high):
+ decade    n  mean_duration  median_duration  ci_low  ci_high
+   1940   13         51.385             52.0  41.921   60.387
+   1950   11        107.091            108.0  97.086  116.730
+   1960   22        142.364            141.5 125.725  158.641
+   1970   63        119.111            112.0 109.840  128.619
+   1980   99        116.434            104.0 109.757  123.769
+   1990  194        113.918            108.0 109.026  118.944
+   2000  601        112.637            108.0 110.434  115.072
+   2010 3951         96.762             96.0  96.059   97.570
+   2020  423         89.522             94.0  86.686   92.435
+
+Composition comparison:
+ decade  observed_mean  genre_standardized_mean  composition_effect
+   1940         51.385                   62.168             -10.784
+   1950        107.091                  125.437             -18.346
+   1960        142.364                  148.086              -5.722
+   1970        119.111                  115.760               3.351
+   1980        116.434                  109.311               7.124
+   1990        113.918                  107.660               6.257
+   2000        112.637                  108.352               4.286
+   2010         96.762                   97.716              -0.954
+   2020         89.522                   94.444              -4.922
+
+Country slopes:
+       country  titles  years_modeled  slope_minutes_per_year  mean_duration
+ United States    2100             36                  -0.845         90.689
+         India     883             24                  -1.118        126.923
+United Kingdom     341             12                  -1.129         94.152
+       Unknown     230             10                  -1.758         80.226
+        Canada     175              8                  -4.573         86.749
